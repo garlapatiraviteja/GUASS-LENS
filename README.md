@@ -206,7 +206,7 @@ PROCEED above 0.75, CONSERVATIVE from 0.40 to 0.75, FALLBACK below 0.40. For a s
 
 **What is checked and what is measured.** Muse's reply is kept only if every number in it also appears in `report.json`. Mouth open/closed and eye openness are measured from the SAM masks (height ÷ width), not read from the fit.
 
-> For the full derivations, symbol definitions and experiments, see the technical paper: [GAUSS LENS: Technical Paper][Guass Lens technical-paper.pdf].
+> For the full derivations, symbol definitions and experiments, see the technical paper:[GAUSS LENS: Technical Paper](Guass%20Lens%20technical-paper.pdf).
 
 ---
 
