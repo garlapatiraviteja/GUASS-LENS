@@ -109,14 +109,12 @@ ticker. When it finishes, the results page appears.
 
 ### 4. About panel
 
-A collapsible panel (✕ to close, ▸ to reopen) with three tabs: **How it works**, **Flowchart**, **Math in brief**.
+A collapsible panel (✕ to close, ▸ to reopen) with three tabs: **How it works**, **Flowchart**, **Math in brief**. 
 
 ---
 
 ## What the pipeline does
 
-## How it works
- 
 ```mermaid
 flowchart TD
   IMG["Face photo"] --> SAM
