@@ -1,6 +1,9 @@
 <h1 align="center">GAUSS LENS</h1>
+<p align="center"><b>Neural perception, auditable geometry.</b></p>
 <p align="center"><i>Perception · Fit · Audit</i></p>
+<p align="center"><a href="https://drive.google.com/file/d/1UPQdI1ihr3o_5gUsqMg8MeIuSQjYGdxs/view?usp=sharing"><b>▶ output for app </b></a></p>
 
+---
 ---
 
 Meta's **SAM 3.1** finds the facial regions in a photo. A **Gauss-Newton solver, with no neural network inside it,** fits a 3D face model to them and grades its own result. Meta's **Muse Spark** then writes a short plain-language verdict from the solver's own report, and its words are thrown away if they contain a number the solver did not produce.
