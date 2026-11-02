@@ -115,19 +115,36 @@ A collapsible panel (✕ to close, ▸ to reopen) with three tabs: **How it work
 
 ## What the pipeline does
 
+## How it works
+ 
+```mermaid
+flowchart TD
+  IMG["Face photo"] --> SAM
+  subgraph P["Perception: Meta SAM 3.1 (neural)"]
+    SAM["5 text-prompted calls: face, eye, eyebrow, nose, lips"]
+    L["Masks to 27 landmarks; merged left/right masks are split"]
+    SAM --> L
+  end
+  L --> GN
+  subgraph G["Geometry: no neural network"]
+    GN["Gauss-Newton fit of a morphable face mesh"]
+    GATE["Quality gate: resolution, sharpness, pose, symmetry, landmark fit"]
+    TRK["Frame fit + confidence c_t"]
+    GN --> GATE
+    GATE -- accepted --> TRK
+  end
+  GATE -- rejected --> REP
+  TRK --> REP["report.json: scores, residual per iteration, region errors"]
+  subgraph A["Audit: Meta Muse Spark (text only)"]
+    M["3-sentence verdict; any number not in report.json is rejected"]
+    T["Template verdict if the API fails"]
+  end
+  REP --> M
+  REP -. "API down / reply rejected" .-> T
+  M --> UI["Streamlit demo"]
+  T --> UI
 ```
-photo ──► SAM 3.1 (5 prompts: face, eyes, eyebrows, nose, lips)
-            │  masks → bounding boxes → ~27 named landmarks
-            ▼
-Phase 1   S2  Gauss-Newton fit of the photo   (identity α, expression β, pose ω/t, eye/brow/nose/mouth/ear)
-          S1  validation, 5 scores            (landmark fit, symmetry, resolution, sharpness, pose)
-          S3  UV colour-texture bake
-          S4  identity / neutral-expression fit
-Phase 2   frame fit + quality gate            (pose, expression, regions) → PROCEED / CONSERVATIVE / FALLBACK
-Phase 3   motion-state update                 (built for video; trivial for one image)
-            ▼
-Audit     report.json  →  Muse Spark writes a short verdict (numbers checked against the report)
-```
+ 
 
 **Validation (Stage 1).** Every one of the five scores must be **above 0.60** (`ACCEPT_THRESHOLD`). The resolution score is
 `min(1, smaller face side / 256 px)`, so the face must be at least about **154 px** across. Otherwise the image
