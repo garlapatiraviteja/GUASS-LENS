@@ -1,15 +1,23 @@
 <h1 align="center">GAUSS LENS</h1>
-<p align="center"><b>Perception... Fit ... Audit </b></p>
+<p align="center"><b>Neural perception, auditable geometry.</b></p>
+<p align="center"><i>Perception · Fit · Audit</i></p>
 
 ---
 
-GAUSS LENS fits a 3D morphable face model to a single face photo (a built-in synthetic model by default, or a BFM / FLAME-style 3DMM you supply), reads off interpretable parameters
-(head pose, eye and mouth state, brow / nose / ear parameters), grades its own fit, and explains the result
-in plain language. It ships as a Streamlit app and a command-line tool.
+Meta's **SAM 3.1** finds the facial regions in a photo. A **Gauss-Newton solver, with no neural network inside it,** fits a 3D face model to them and grades its own result. Meta's **Muse Spark** then writes a short plain-language verdict from the solver's own report, and its words are thrown away if they contain a number the solver did not produce.
 
-> **Design principle:** neural networks do *perception* (SAM 3.1 finds the face parts; Muse Spark writes the
-> verdict). The 3D solve itself is **pure NumPy Gauss-Newton with no network inside it**, so every number
-> can be audited.
+GAUSS LENS fits a 3D morphable face model to a single face photo (a built-in synthetic model by default, or a BFM / FLAME-style 3DMM you supply) and reads off interpretable parameters: head pose, eye and mouth state, brow / nose / ear parameters. It ships as a Streamlit app and a command-line tool.
+
+> **The claim is deliberately narrow:** no neural network in the 3D solve. It is not "no neural networks anywhere". SAM and Muse Spark are neural. The step that turns landmarks into head pose and face parameters is plain NumPy that you can read, log and test. `tests/test_no_network_in_solver.py` fails if any solver module imports an ML or API library.
+
+## Why
+
+Neural face trackers return numbers (head pose, mouth open or closed) but cannot say why they trust them, and cannot refuse a bad photo in a way you can inspect. We split the job:
+
+* **Perception** (finding eyes, brows, nose, lips and face in a photo) is hard to write by hand, so a neural model does it.
+* **The 3D result** comes from equations you can follow. Each run saves the residual after every iteration, five quality scores, and the error per face region, so you can see why a result was accepted or refused.
+
+---
 
 ---
 
