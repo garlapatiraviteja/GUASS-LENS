@@ -1,0 +1,25 @@
+# secrets
+.env
+*.key
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+
+# run outputs and caches (cache/ holds SAM/Muse answers about your photos)
+cache/
+out/
+extract_out/
+*_out/
+*.npz
+
+# photos: never commit faces; use synthetic or consenting faces only
+*.jpg
+*.jpeg
+*.png
+*.webp
+!docs/*.png
+data_folder/

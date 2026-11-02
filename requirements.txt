@@ -1,0 +1,9 @@
+numpy>=1.24
+scipy>=1.10        # stage-3 texture bake (gaussian filter)
+Pillow>=9.0        # image I/O in app.py and diagnose overlay
+streamlit>=1.40    # only for app.py
+# optional: opencv-python or imageio -> video loading (io_utils.load_video_frames)
+# --- real landmarks from SAM 3.1 (run.py --landmarks sam) ---
+openai>=1.50          # Meta Model API is OpenAI-compatible (api.meta.ai/v1)
+meta-sam-parser       # decodes SAM's special-token output
+python-dotenv         # reads MODEL_API_KEY from .env
