@@ -2,9 +2,7 @@
 <p align="center"><b>Neural perception, auditable geometry.</b></p>
 <p align="center"><i>Perception · Fit · Audit</i></p>
 <p align="center"><a href="https://drive.google.com/file/d/1UPQdI1ihr3o_5gUsqMg8MeIuSQjYGdxs/view?usp=sharing"><b>▶ Streamlit app demo</b></a> <sub>(upload a photo → run → results)</sub><br>
-<!-- Add your explanation video here, then delete this comment markers:
-<a href="PASTE-EXPLANATION-VIDEO-LINK-HERE"><b>▶ Detailed project explanation</b></a> <sub>(how it works, the maths, the design choices)</sub>
---></p>
+<a href="PASTE-EXPLANATION-VIDEO-LINK-HERE"><b>▶ Detailed project explanation</b></a> <sub>(how it works, the maths, the design choices)</sub></p>
 
 ---
 
