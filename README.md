@@ -1,7 +1,7 @@
 <h1 align="center">GAUSS LENS</h1>
 <p align="center"><b>Neural perception, auditable geometry.</b></p>
 <p align="center"><i>Perception · Fit · Audit</i></p>
-<p align="center"><a href="https://drive.google.com/file/d/1UPQdI1ihr3o_5gUsqMg8MeIuSQjYGdxs/view?usp=sharing"><b>▶Streamlit app demo</b></a> <sub>(upload a photo → run → results)</sub><br>
+<p align="center"><a href="https://drive.google.com/file/d/1UPQdI1ihr3o_5gUsqMg8MeIuSQjYGdxs/view?usp=sharing"><b>▶ 3-minute Streamlit app demo</b></a> <sub>(upload a photo → run → results)</sub><br>
 <a href="PASTE-EXPLANATION-VIDEO-LINK-HERE"><b>▶ Detailed project explanation</b></a> <sub>(how it works, the maths, the design choices)</sub></p>
 
 ---
@@ -38,6 +38,8 @@ Neural face trackers return numbers (head pose, mouth open or closed) but cannot
 13. [Troubleshooting](#troubleshooting)
 14. [Project layout](#project-layout)
 15. [CLI equivalent](#cli-equivalent)
+16. [Responsible use](#responsible-use)
+17. [License](#license)
 
 ---
 
@@ -401,3 +403,15 @@ Outputs go to `--out_dir` (default `extract_out/`): `phase1_params.npz`, `phase2
 
 The CLI default (`--landmarks model`) is a quick offline mode that uses the template's own landmarks; use
 `--landmarks sam` to fit to evidence from the photo.
+
+---
+
+## Responsible use
+
+GAUSS LENS is a research prototype. It is not designed or intended for identifying people, tracking individuals or surveillance. Use synthetic faces or faces of people who have given their consent, and do not commit photos, `.env` or `cache/` to the repository.
+
+---
+
+## License
+
+MIT
