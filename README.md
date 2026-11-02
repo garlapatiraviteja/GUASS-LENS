@@ -219,7 +219,7 @@ A single portrait photo, run with SAM 3.1 landmarks and the Muse Spark verdict (
 
 
 
-Demo-link:- \[▶ Watch GUASS-LENS Demo](https://drive.google.com/file/d/1UPQdI1ihr3o\_5gUsqMg8MeIuSQjYGdxs/view?usp=sharing)
+Demo-link:- \[▶ Watch GUASS-LENS Demo]([https://drive.google.com/file/d/1UPQdI1ihr3o_5gUsqMg8MeIuSQjYGdxs/view?usp=sharing])
 
 |Item|Result|
 |-|-|
