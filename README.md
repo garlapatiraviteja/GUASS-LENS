@@ -19,24 +19,23 @@ Neural face trackers return numbers (head pose, mouth open or closed) but cannot
 
 ---
 
----
-
 ## Contents
 
 1. [Quick start](#quick-start)
 2. [Requirements and configuration](#requirements-and-configuration)
 3. [Using the app](#using-the-app)
 4. [What the pipeline does](#what-the-pipeline-does)
-5. [Reading the results](#reading-the-results)
-6. [Outputs and downloads](#outputs-and-downloads)
-7. [Cost and safety limits](#cost-and-safety-limits)
-8. [Example run](#example-run)
-9. [What we measured](#what-we-measured)
-10. [Tests](#tests)
-11. [Roadmap](#roadmap)
-12. [Troubleshooting](#troubleshooting)
-13. [Project layout](#project-layout)
-14. [CLI equivalent](#cli-equivalent)
+5. [Math in brief](#math-in-brief)
+6. [Reading the results](#reading-the-results)
+7. [Outputs and downloads](#outputs-and-downloads)
+8. [Cost and safety limits](#cost-and-safety-limits)
+9. [Example run](#example-run)
+10. [What we measured](#what-we-measured)
+11. [Tests](#tests)
+12. [Roadmap](#roadmap)
+13. [Troubleshooting](#troubleshooting)
+14. [Project layout](#project-layout)
+15. [CLI equivalent](#cli-equivalent)
 
 ---
 
@@ -117,11 +116,13 @@ ticker. When it finishes, the results page appears.
 
 ### 4. About panel
 
-A collapsible panel (✕ to close, ▸ to reopen) with three tabs: **How it works**, **Flowchart**, **Math in brief**. 
+A collapsible panel (✕ to close, ▸ to reopen) with three tabs: **How it works**, **Flowchart**, **Math in brief**.
 
 ---
 
-## simple pipeline (details in flowchart)
+## What the pipeline does
+
+A simplified view (the full version is in the app's **Flowchart** tab):
 
 ```mermaid
 flowchart TD
@@ -143,20 +144,20 @@ flowchart TD
   TRK --> REP["report.json: scores, residual per iteration, region errors"]
   subgraph A["Audit: Meta Muse Spark (text only)"]
     M["3-sentence verdict; any number not in report.json is rejected"]
-    T["Template verdict if the API fails"]
+    T["CLI only: free template verdict (no API)"]
   end
   REP --> M
-  REP -. "API down / reply rejected" .-> T
-  M --> UI["Streamlit demo"]
-  T --> UI
+  REP -. "CLI default" .-> T
+  M --> UI["Streamlit app (shows an error if Muse fails)"]
+  M --> CLI["CLI: verdict.txt"]
+  T --> CLI
 ```
- 
 
 **Validation (Stage 1).** Every one of the five scores must be **above 0.60** (`ACCEPT_THRESHOLD`). The resolution score is
 `min(1, smaller face side / 256 px)`, so the face must be at least about **154 px** across. Otherwise the image
 is rejected and the app explains why.
 
-**Quality gate (Phase 2).** `c_t = 0.5·s_lm + 0.3·s_flow + 0.2·s_pose`
+**Quality gate (Phase 2).** Three scores (landmark fit, flow, pose) are combined into a confidence `c_t` (formula in [Math in brief](#math-in-brief)), which maps to a decision:
 
 |`c_t`|Decision|
 |-|-|
@@ -169,6 +170,39 @@ source and target.
 
 **The verdict.** Muse Spark receives only `report.json` and writes at most three short sentences. Any reply
 containing a number that is not in the report is discarded.
+
+---
+
+## Math in brief
+
+**Fit (Stage 2).** Minimised by Gauss-Newton over the parameter vector Θ = [α β ω t ψ γ δ]:
+
+```
+E(Θ)  = w_app·E_app + Σ_i ‖ π(S_i; Θ) − x_i ‖² + E_reg      x_i = landmark from the SAM masks, π = camera projection
+ΔΘ    = −(JᵀJ + λΛ)⁻¹ Jᵀ e ,   λ = 0.01                      a step is kept only if the residual drops (backtracking)
+```
+
+**Quality scores (Stage 1).** Each is in [0, 1]. The photo is accepted only if all five are above 0.60:
+
+```
+resolution = min(1, min(H_face, W_face) / 256)
+sharpness  = min(1, ‖∇²I‖ / ‖∇²I_ref‖)                      Laplacian energy vs a sharp reference
+pose       = exp(−(ω_y² + ω_x²) / 2σ²),   σ = 30°
+symmetry   = 1 − ‖L_left − flip(L_right)‖ / (k · W_face)
+landmark   = (1/N) Σ_i exp(−‖x_i − x̂_i‖² / 2σ_lm²),   σ_lm = max(3 px, 0.02 · W_face)
+```
+
+**Final decision (Phase 2).**
+
+```
+c_t = 0.5·s_lm + 0.3·s_flow + 0.2·s_pose
+```
+
+PROCEED above 0.75, CONSERVATIVE from 0.40 to 0.75, FALLBACK below 0.40. For a single photo there is no previous frame, so `s_flow = 1`.
+
+**What is checked and what is measured.** Muse's reply is kept only if every number in it also appears in `report.json`. Mouth open/closed and eye openness are measured from the SAM masks (height ÷ width), not read from the fit.
+
+> For the full derivations, symbol definitions and experiments, see the technical paper: [GAUSS LENS: Technical Paper](docs/technical-paper.pdf).
 
 ---
 
