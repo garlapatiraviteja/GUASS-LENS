@@ -1,7 +1,7 @@
 <h1 align="center">GAUSS LENS</h1>
 <p align="center"><b>Neural perception, auditable geometry.</b></p>
 <p align="center"><i>Perception · Fit · Audit</i></p>
-<p align="center"><a href="https://drive.google.com/file/d/1UPQdI1ihr3o_5gUsqMg8MeIuSQjYGdxs/view?usp=sharing"><b>▶ Streamlit app demo</b></a> <sub>(upload a photo → run → results)</sub><br>
+<p align="center"><a href="https://drive.google.com/file/d/1UPQdI1ihr3o_5gUsqMg8MeIuSQjYGdxs/view?usp=sharing"><b>▶ 3-minute Streamlit app demo</b></a> <sub>(upload a photo → run → results)</sub><br>
 <a href="PASTE-EXPLANATION-VIDEO-LINK-HERE"><b>▶ Detailed project explanation</b></a> <sub>(how it works, the maths, the design choices)</sub></p>
 
 ---
@@ -271,11 +271,6 @@ is free.
 ## Example run
 
 A single portrait photo, run with SAM 3.1 landmarks and the Muse Spark verdict (built-in synthetic model). The photo itself is not included in the repository.
-
-### 🎬 Demo videos
-
-* **Streamlit app demo (about 3 minutes):** [▶ Watch the app in action](https://drive.google.com/file/d/1UPQdI1ihr3o_5gUsqMg8MeIuSQjYGdxs/view?usp=sharing) — shows the app end to end: upload, run, results.
-* **Detailed project explanation:** [▶ Watch the walkthrough](PASTE-EXPLANATION-VIDEO-LINK-HERE) — explains the idea, the pipeline and the maths in detail.
 
 |Item|Result|
 |-|-|
