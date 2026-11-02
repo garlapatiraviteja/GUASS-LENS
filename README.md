@@ -1,4 +1,4 @@
-<h1 align="center">GAUSS LENS</h1> <p align="center"><b>Neural perception, auditable geometry.</b></p> <p align="center"><i>Perception · Fit · Audit</i></p> <p align="center"><a href="https://drive.google.com/file/d/1UPQdI1ihr3o_5gUsqMg8MeIuSQjYGdxs/view?usp=sharing"><b>▶ Watch the 3-minute Streamlit app demo</b></a><br><sub>upload a photo → run → results (this is the app, not the command-line tool)</sub></p>
+<h1 align="center">GAUSS LENS</h1> <p align="center"><b>Neural perception, auditable geometry.</b></p> <p align="center"><i>Perception · Fit · Audit</i></p> <p align="center"><a href="https://drive.google.com/file/d/1UPQdI1ihr3o_5gUsqMg8MeIuSQjYGdxs/view?usp=sharing"><b>▶ Watch the Streamlit app demo</b></a><br><sub>upload a photo → run → results (this is the app, not the command-line tool)</sub></p>
 
 ---
 ---
