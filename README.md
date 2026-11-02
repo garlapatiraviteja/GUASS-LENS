@@ -2,13 +2,15 @@
 <p align="center"><b>Neural perception, auditable geometry.</b></p>
 <p align="center"><i>Perception · Fit · Audit</i></p>
 <p align="center"><a href="https://drive.google.com/file/d/1UPQdI1ihr3o_5gUsqMg8MeIuSQjYGdxs/view?usp=sharing"><b>▶ Streamlit app demo</b></a> <sub>(upload a photo → run → results)</sub><br>
-<a href="PASTE-EXPLANATION-VIDEO-LINK-HERE"><b>▶ Detailed project explanation</b></a> <sub>(how it works, the maths, the design choices)</sub></p>
+<!-- Add your explanation video here, then delete this comment markers:
+<a href="PASTE-EXPLANATION-VIDEO-LINK-HERE"><b>▶ Detailed project explanation</b></a> <sub>(how it works, the maths, the design choices)</sub>
+--></p>
 
 ---
 
 Meta's **SAM 3.1** finds the facial regions in a photo. A **Gauss-Newton solver, with no neural network inside it,** fits a 3D face model to them and grades its own result. Meta's **Muse Spark** then writes a short plain-language verdict from the solver's own report, and its words are thrown away if they contain a number the solver did not produce.
 
-GAUSS LENS fits a 3D morphable face model to a single face photo (a built-in synthetic model by default, or a BFM / FLAME-style 3DMM you supply) and reads off interpretable parameters: head pose, eye and mouth state, brow / nose / ear parameters. It ships as a Streamlit app and a command-line tool.
+GAUSS LENS fits a 3D morphable face model to a single face photo (a built-in synthetic model by default, or a BFM / FLAME-style 3DMM you supply) and reads off interpretable parameters: head pose, eye and mouth state, brow / nose parameters (ear parameters exist but are held at zero, since ears are not requested). It ships as a Streamlit app and a command-line tool.
 
 > **The claim is deliberately narrow:** no neural network in the 3D solve. It is not "no neural networks anywhere". SAM and Muse Spark are neural. The step that turns landmarks into head pose and face parameters is plain NumPy that you can read, log and test. `tests/test_no_network_in_solver.py` fails if any solver module imports an ML or API library.
 
@@ -216,7 +218,7 @@ The results page shows, in order:
 
 * **Decision line** — decision and quality `c_t` in one line at the top.
 * **Landmark overlay** — the fitted model's region vertices projected onto your photo, coloured by region
-(eye, brow, nose, mouth, ear). The **baked UV texture** sits under it in a collapsed section (it has artefacts and is not part of the claim).
+(eye, brow, nose, mouth, ear). Ear points are drawn for reference and are not used in the fit. The **baked UV texture** sits under it in a collapsed section (it has artefacts and is not part of the claim).
 * **Head pose and per-region error** — yaw / pitch / roll in degrees; mean pixel error per region (eye, brow, nose, mouth, and ear when the model has ear points) and overall.
 * **Residual per iteration** — the solver's convergence curve, with a **▶ Replay the solve** button.
 * **Eye, mouth, nose and expression sections.**
