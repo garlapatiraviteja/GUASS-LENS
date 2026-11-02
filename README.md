@@ -1,5 +1,5 @@
 <h1 align="center">GAUSS LENS</h1>
-<p align="center"><b>One photo in. Auditable 3D face parameters out.</b></p>
+<p align="center"><b>Perception... Fit ... Audit </b></p>
 
 ---
 
