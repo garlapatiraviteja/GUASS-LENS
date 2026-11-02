@@ -1,13 +1,16 @@
-<h1 align="center">GAUSS LENS</h1> <p align="center"><b>Neural perception, auditable geometry.</b></p> <p align="center"><i>Perception · Fit · Audit</i></p> <p align="center"><a href="https://drive.google.com/file/d/1UPQdI1ihr3o_5gUsqMg8MeIuSQjYGdxs/view?usp=sharing"><b>▶ Watch the Streamlit app demo</b></a><br><sub>upload a photo → run → results (this is the app, not the command-line tool)</sub></p>
+<h1 align="center">GAUSS LENS</h1>
+<p align="center"><b>Neural perception, auditable geometry.</b></p>
+<p align="center"><i>Perception · Fit · Audit</i></p>
+<p align="center"><a href="https://drive.google.com/file/d/1UPQdI1ihr3o_5gUsqMg8MeIuSQjYGdxs/view?usp=sharing"><b>▶ 3-minute Streamlit app demo</b></a> <sub>(upload a photo → run → results)</sub><br>
+<a href="PASTE-EXPLANATION-VIDEO-LINK-HERE"><b>▶ Detailed project explanation</b></a> <sub>(how it works, the maths, the design choices)</sub></p>
 
----
 ---
 
 Meta's **SAM 3.1** finds the facial regions in a photo. A **Gauss-Newton solver, with no neural network inside it,** fits a 3D face model to them and grades its own result. Meta's **Muse Spark** then writes a short plain-language verdict from the solver's own report, and its words are thrown away if they contain a number the solver did not produce.
 
 GAUSS LENS fits a 3D morphable face model to a single face photo (a built-in synthetic model by default, or a BFM / FLAME-style 3DMM you supply) and reads off interpretable parameters: head pose, eye and mouth state, brow / nose / ear parameters. It ships as a Streamlit app and a command-line tool.
 
-> **Claim :** no neural network in the 3D solve. It is not "no neural networks anywhere". SAM and Muse Spark are neural. The step that turns landmarks into head pose and face parameters is plain NumPy that you can read, log and test. `tests/test_no_network_in_solver.py` fails if any solver module imports an ML or API library.
+> **The claim is deliberately narrow:** no neural network in the 3D solve. It is not "no neural networks anywhere". SAM and Muse Spark are neural. The step that turns landmarks into head pose and face parameters is plain NumPy that you can read, log and test. `tests/test_no_network_in_solver.py` fails if any solver module imports an ML or API library.
 
 ## Why
 
@@ -269,9 +272,10 @@ is free.
 
 A single portrait photo, run with SAM 3.1 landmarks and the Muse Spark verdict (built-in synthetic model). The photo itself is not included in the repository.
 
-### 🎬 Project Demo
+### 🎬 Demo videos
 
-Demo video: [▶ Watch GAUSS-LENS Demo](https://drive.google.com/file/d/1UPQdI1ihr3o_5gUsqMg8MeIuSQjYGdxs/view?usp=sharing)
+* **Streamlit app demo (about 3 minutes):** [▶ Watch the app in action](https://drive.google.com/file/d/1UPQdI1ihr3o_5gUsqMg8MeIuSQjYGdxs/view?usp=sharing) — shows the app end to end: upload, run, results.
+* **Detailed project explanation:** [▶ Watch the walkthrough](PASTE-EXPLANATION-VIDEO-LINK-HERE) — explains the idea, the pipeline and the maths in detail.
 
 |Item|Result|
 |-|-|
