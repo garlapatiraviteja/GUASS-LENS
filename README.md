@@ -1,5 +1,4 @@
 <h1 align="center">GAUSS LENS</h1>
-<p align="center"><b>Neural perception, auditable geometry.</b></p>
 <p align="center"><i>Perception · Fit · Audit</i></p>
 
 ---
