@@ -23,3 +23,6 @@ extract_out/
 *.webp
 !docs/*.png
 data_folder/
+
+# Demo videos (host separately)
+docs/*.mp4
