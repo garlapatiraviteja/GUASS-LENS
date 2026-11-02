@@ -7,7 +7,7 @@ Meta's **SAM 3.1** finds the facial regions in a photo. A **Gauss-Newton solver,
 
 GAUSS LENS fits a 3D morphable face model to a single face photo (a built-in synthetic model by default, or a BFM / FLAME-style 3DMM you supply) and reads off interpretable parameters: head pose, eye and mouth state, brow / nose / ear parameters. It ships as a Streamlit app and a command-line tool.
 
-> **The claim is :** no neural network in the 3D solve. It is not "no neural networks anywhere". SAM and Muse Spark are neural. The step that turns landmarks into head pose and face parameters is plain NumPy that you can read, log and test. `tests/test_no_network_in_solver.py` fails if any solver module imports an ML or API library.
+> **Claim :** no neural network in the 3D solve. It is not "no neural networks anywhere". SAM and Muse Spark are neural. The step that turns landmarks into head pose and face parameters is plain NumPy that you can read, log and test. `tests/test_no_network_in_solver.py` fails if any solver module imports an ML or API library.
 
 ## Why
 
