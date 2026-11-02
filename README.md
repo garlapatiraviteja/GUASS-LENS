@@ -113,7 +113,7 @@ A collapsible panel (✕ to close, ▸ to reopen) with three tabs: **How it work
 
 ---
 
-## What the pipeline does
+## simple pipeline (details in flowchart)
 
 ```mermaid
 flowchart TD
