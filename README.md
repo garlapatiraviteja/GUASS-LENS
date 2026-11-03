@@ -1,8 +1,7 @@
 <h1 align="center">GAUSS LENS</h1>
 <p align="center"><b>Neural perception, auditable geometry.</b></p>
 <p align="center"><i>Perception · Fit · Audit</i></p>
-<p align="center"><a href="https://drive.google.com/file/d/1UPQdI1ihr3o_5gUsqMg8MeIuSQjYGdxs/view?usp=sharing"><b>▶ Streamlit app demo</b></a> <sub>(upload a photo → run → results)</sub><br>
-<a href="PASTE-EXPLANATION-VIDEO-LINK-HERE"><b>▶ Detailed project explanation</b></a> <sub>(how it works, the maths, the design choices)</sub></p>
+<a href="https://drive.google.com/file/d/1d_aCELILhXQH5qyma_os1tq6Uo13Ywpe/view?usp=sharing"><b>▶ Detailed project explanation</b></a> <sub>(how it works, the maths, the design choices)</sub></p>
 
 ---
 
