@@ -292,7 +292,7 @@ is free.
 
 ## Example run
 
-A single portrait photo, run with SAM 3.1 landmarks and the Muse Spark verdict (built-in synthetic model). The photo itself is not included in the repository.
+A single portrait photo, run with SAM 3.1 landmarks and the Muse Spark verdict (built-in synthetic model). The photo itself is not included in the repository(check in the demo app).
 
 |Item|Result|
 |-|-|
