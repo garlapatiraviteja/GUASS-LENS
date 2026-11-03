@@ -247,20 +247,34 @@ When SAM masks are available, the app reports mask-measured eye and mouth values
 
 ## Outputs and downloads
 
+### Demo links
+
+- 🌐 [▶ Interactive App Demo](https://drive.google.com/file/d/1UPQdI1ihr3o_5gUsqMg8MeIuSQjYGdxs/view?usp=sharing) — Run the pipeline through the web interface.
+- 💻 [▶ CLI / Command-Line Demo](https://drive.google.com/file/d/157wpWpdQGvJ0vigLQ_fdVTdN8LjpGk4H/view?usp=sharing) — Run the pipeline directly from the command line.
+
+### App outputs and downloads
+
 Buttons on the results page:
 
-|Button|File|Contents|
-|-|-|-|
-|⬇ Parameters (JSON)|`face_params.json`|Same structure as the CLI's `summary.json`|
-|⬇ Overlay PNG|`face_overlay.png`|The landmark overlay|
-|⬇ UV texture PNG|`texture.png`|The baked texture|
-|⬇ Download full raw log|`face_params_pipeline_log.txt`|Unabridged solver log|
+| Button | File | Contents |
+|---|---|---|
+| ⬇ Parameters (JSON) | `face_params.json` | Same structure as the CLI's `summary.json` |
+| ⬇ Overlay PNG | `face_overlay.png` | The landmark overlay |
+| ⬇ UV texture PNG | `texture.png` | The baked texture |
+| ⬇ Download full raw log | `face_params_pipeline_log.txt` | Unabridged solver log |
 
-The JSON contains: `quality`, `decision`, `head_pose_deg`, `eye`, `mouth_open`, `mouth_aspect`,
-`region_error_px`, `sam_measures`, the `*_fitted_unreliable` values, and a `cost_usd` block.
+The JSON contains: `quality`, `decision`, `head_pose_deg`, `eye`, `mouth_open`, `mouth_aspect`, `region_error_px`, `sam_measures`, the `*_fitted_unreliable` values, and a `cost_usd` block.
 
-The CLI additionally writes `phase1_params.npz`, `phase2_params.npz`, `report.json` and `verdict.txt`.
+### CLI additional outputs
 
+The CLI additionally writes:
+
+| File | Contents |
+|---|---|
+| `phase1_params.npz` | Phase 1 fitted parameters |
+| `phase2_params.npz` | Phase 2 fitted parameters |
+| `report.json` | Structured pipeline report |
+| `verdict.txt` | Final pipeline verdict |
 ---
 
 ## Cost and safety limits
