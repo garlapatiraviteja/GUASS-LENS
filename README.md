@@ -4,10 +4,10 @@
 
 <p align="center">
   <a href="https://drive.google.com/file/d/1VwOCGnhCaz7Fck6AUrnupfxuL9iKJzJm/view?usp=sharing">
-    <b>▶ Detailed project explanation</b>
+    <b>▶ About GUASS LENS</b>
   </a>
   <br>
-  <sub>How it works, the maths, the design choices</sub>
+  <sub>Summary of the Project</sub>
 </p>
 
 ---
