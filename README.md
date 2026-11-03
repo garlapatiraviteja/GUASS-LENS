@@ -1,7 +1,14 @@
 <h1 align="center">GAUSS LENS</h1>
 <p align="center"><b>Neural perception, auditable geometry.</b></p>
 <p align="center"><i>Perception · Fit · Audit</i></p>
-<a href="https://drive.google.com/file/d/1VwOCGnhCaz7Fck6AUrnupfxuL9iKJzJm/view?usp=sharing"><b>▶ Detailed project explanation</b></a> <sub>(how it works, the maths, the design choices)</sub></p>
+
+<p align="center">
+  <a href="https://drive.google.com/file/d/1VwOCGnhCaz7Fck6AUrnupfxuL9iKJzJm/view?usp=sharing">
+    <b>▶ Detailed project explanation</b>
+  </a>
+  <br>
+  <sub>How it works, the maths, the design choices</sub>
+</p>
 
 ---
 
